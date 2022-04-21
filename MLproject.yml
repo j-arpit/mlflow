@@ -1,7 +1,7 @@
 name: My Project
 
 docker_env: 
-    image: test01
+  image: test01
 
 entry_points:
   main:
