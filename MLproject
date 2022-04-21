@@ -1,6 +1,7 @@
 name: My Project
 
-conda_env: my_env.yaml
+docker_env: 
+  image: test01
 
 entry_points:
   main:
