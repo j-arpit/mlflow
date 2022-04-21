@@ -8,29 +8,8 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import ElasticNet
 from urllib.parse import urlparse
-import mlflow
 import mlflow.sklearn
-import git
-
-repo = git.Repo("./")
-def mlflow_commit(message:str="Experiment Run", auto_push=False)->bool:
-    """This will commit current state of the notebook"""
-    try:
-        repo.git.add('.')
-        repo.git.commit(m=message)
-        
-        if auto_push:
-            try:
-                origin = repo.remote(name='origin')
-                origin.push()
-            except Exception as e:
-                print(f"could not push to the remote repository! {e}")
-                return False
-    except Exception as e:
-        print(f"could not complete the git! {e}")
-        return False
-    else:
-        return True
+import mlflow
 
 
 def eval_metrics(actual, pred):
@@ -63,8 +42,9 @@ test_y = test[["quality"]]
 
 alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.5
 l1_ratio = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5
-#mlflow.set_tracking_uri("file:///C:/Users/Arpit%20Joshi/ml/mlruns")
-mlflow.set_tracking_uri("http://localhost:5000")
+mlflow.set_tracking_uri("http://172.0.1.81:5000")
+'''mlflow.set_tracking_uri("http://localhost:5000")'''
+mlflow.set_experiment("exp2")   
 with mlflow.start_run():
     lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
     lr.fit(train_x, train_y)
@@ -91,7 +71,6 @@ with mlflow.start_run():
        # Register the model
         model_name = "ElasticnetWineModel"
         mlflow.sklearn.log_model(lr, "model", registered_model_name="ElasticnetWineModel")
-        print(mlflow_commit())
     else:
         mlflow.sklearn.log_model(lr, "model")
 
