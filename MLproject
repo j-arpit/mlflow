@@ -1,7 +1,7 @@
 name: myproject
 
 docker_env: 
-  image: mlflow
+  image: test
 
 entry_points:
   main:
