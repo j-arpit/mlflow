@@ -8,4 +8,4 @@ entry_points:
     parameters:
       alpha: {type: float, default: 0.5}
       l1_ratio: {type: float, default: 0.5}
-    command: "python Untitled.py -r {alpha} {l1_ratio}"
+    command: "python Untitled.py {alpha} {l1_ratio}"
