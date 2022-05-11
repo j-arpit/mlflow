@@ -42,4 +42,5 @@ jobs:
           proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
           proxy_port: 22
           script: |
+            whoami
             sudo /usr/local/bin/mlflow run https://github.com/j-arpit/mlflow.git
