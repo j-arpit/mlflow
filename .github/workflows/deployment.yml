@@ -42,4 +42,5 @@ jobs:
           proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
           proxy_port: 22
           script: |
-            sudo /usr/local/bin/mlflow run https://github.com/j-arpit/mlflow.git
+            sudo su
+            sudo /usr/local/bin/mlflow run https://github.com/j-arpit/mlflow.git --experiment-name "exp2"
