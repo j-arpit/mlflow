@@ -66,13 +66,9 @@ with mlflow.start_run():
 
     ##print(mlflow.get_tracking_uri())
     
-    if tracking_url_type_store != "file":
-       # Register the model
-        model_name = "ElasticnetWineModel"
-        mlflow.sklearn.log_model(lr, "model", registered_model_name="ElasticnetWineModel")
-    else:
-        mlflow.sklearn.log_model(lr, "model")
-
+    model_name = "ElasticnetWineModel"
+    mlflow.sklearn.log_model(lr, "model", registered_model_name="ElasticnetWineModel")
+    
 
 
 
