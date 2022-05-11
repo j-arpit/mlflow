@@ -2,7 +2,7 @@ name: myproject
 
 docker_env: 
   image: test
-  environment: ["MLFLOW_TRACKING_URI", "MLFLOW_S3_ENDPOINT_URL", "AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
+  environment: [["MLFLOW_TRACKING_URI", "http://127.0.0.1:5000"], ["MLFLOW_S3_ENDPOINT_URL", "http://127.0.0.1:9000"], ["AWS_ACCESS_KEY_ID", "root"], ["AWS_SECRET_ACCESS_KEY", "toor1234"]]
 
 entry_points:
   main:
