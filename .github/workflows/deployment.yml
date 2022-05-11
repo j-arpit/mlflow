@@ -42,5 +42,8 @@ jobs:
           proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
           proxy_port: 22
           script: |
-            whoami
+            export MLFLOW_S3_ENDPOINT_URL=http://127.0.0.1:9000
+            export AWS_ACCESS_KEY_ID=root
+            export AWS_SECRET_ACCESS_KEY=toor1234
+            export MLFLOW_TRACKING_URI=http://127.0.0.1:5000
             sudo /usr/local/bin/mlflow run https://github.com/j-arpit/mlflow.git
