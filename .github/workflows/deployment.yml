@@ -42,4 +42,4 @@ jobs:
           proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
           proxy_port: 22
           script: |
-            sh deploy.sh
+            sh ./deploy.sh
