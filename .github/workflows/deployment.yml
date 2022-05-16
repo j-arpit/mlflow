@@ -27,7 +27,7 @@ jobs:
         run: sh script.sh
         
       - name: print env
-        run: printenv
+        run: cat $GITHUB_ENV
       
       # Runs a single command using the runners shell
       - name: Install SSH Key
