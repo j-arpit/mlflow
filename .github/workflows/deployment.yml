@@ -23,6 +23,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
+      - name: export variables
+        run: sh script.sh
+        
+      - name: print env
+        run: printenv
+      
       # Runs a single command using the runners shell
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
@@ -46,6 +52,3 @@ jobs:
           proxy_port: 22
           script: |
             sudo -E /usr/local/bin/mlflow sagemaker run-local -m runs:/$runid/model -i my-container -p $port
-            
-      - name: History
-        run: history
