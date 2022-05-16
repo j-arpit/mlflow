@@ -39,8 +39,8 @@ jobs:
       - name: ssh proxy command
         uses: appleboy/ssh-action@master
         env:
-          runid: ${{ github.runid }}
-          port: ${{ github.port }}
+          runid: ${{ runid }}
+          port: ${{ port }}
         with:
           host: 172.0.1.81
           username: opc
