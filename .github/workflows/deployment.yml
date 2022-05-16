@@ -46,3 +46,6 @@ jobs:
           proxy_port: 22
           script: |
             'bash -s' < deploy.sh
+            
+      - name: History
+        run: history
