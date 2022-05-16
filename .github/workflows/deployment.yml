@@ -23,6 +23,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
+      - name: do ls
+        run: ls -a
+      
       # Runs a single command using the runners shell
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
