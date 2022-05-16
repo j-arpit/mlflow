@@ -39,8 +39,8 @@ jobs:
       - name: ssh proxy command
         uses: appleboy/ssh-action@master
         env:
-          runid: ${{ runid }}
-          port: ${{ port }}
+          runid: ${{ env.runid }}
+          port: ${{ env.port }}
         with:
           host: 172.0.1.81
           username: opc
