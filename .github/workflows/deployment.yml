@@ -31,7 +31,7 @@ jobs:
           known_hosts: unnecessary
         
       - name: do ls
-        run: cat /bin/drone-ssh
+        run: ls /bin/
           
       - name: ssh proxy command
         uses: appleboy/ssh-action@master
