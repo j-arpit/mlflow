@@ -55,4 +55,4 @@ jobs:
           proxy_port: 22
           envs: RID,PT
           script: |
-            echo "sudo -E /usr/local/bin/mlflow sagemaker run-local -m runs:/$RID/model -i my-container -p $PT"
+            sudo -E /usr/local/bin/mlflow sagemaker run-local -m runs:/$RID/model -i my-container -p $PT
