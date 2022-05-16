@@ -32,6 +32,9 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: unnecessary
+          
+      - name: ssh command
+        run: ssh -i  ${{ secrets.SSH_PRIVATE_KEY }} -J opc@193.122.68.49:22 opc@172.0.1.81:22 'bash -s' < deploy.sh
       
       - name: ssh proxy command
         uses: appleboy/ssh-action@master
