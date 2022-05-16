@@ -25,6 +25,9 @@ jobs:
       
       - name: export runid and port no
         run: sh ./deploy.sh
+        
+      - name: print envt variables
+        run: printenv
 
       # Runs a single command using the runners shell
       - name: Install SSH Key
