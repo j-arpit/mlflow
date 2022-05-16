@@ -32,6 +32,9 @@ jobs:
         
       - name: do ls
         run: ls -a ~/.ssh
+        
+      - name: ssh command
+        run: ssh -i  ~/.ssh/id_rsa -J opc@193.122.68.49:22 opc@172.0.1.81:22 'bash -s' < deploy.sh
           
       - name: ssh proxy command
         uses: appleboy/ssh-action@master
