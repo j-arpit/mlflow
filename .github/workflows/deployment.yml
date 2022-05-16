@@ -35,21 +35,6 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: unnecessary
-          
-      - name: ssh proxy command
-        uses: appleboy/ssh-action@master
-        env:
-          runid: ${{ env.runid }}
-          port: ${{ env.port }}
-        with:
-          host: 172.0.1.81
-          username: opc
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22
-          proxy_host: 193.122.68.49
-          proxy_username: opc
-          proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          proxy_port: 22
-          envs: runid,port
-          script: |
-            echo "sudo -E /usr/local/bin/mlflow sagemaker run-local -m runs:/$runid/model -i my-container -p $port"
+      
+      - name: print
+        run: echo "${{ runid }}"
