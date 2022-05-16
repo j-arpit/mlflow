@@ -29,12 +29,12 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: unnecessary
-        
-      - name: do ls
-        run: ls /bin/
           
       - name: ssh proxy command
         uses: appleboy/ssh-action@master
+        env:
+          runid: ${{ github.runid }}
+          port: ${{ github.port }}
         with:
           host: 172.0.1.81
           username: opc
@@ -45,7 +45,7 @@ jobs:
           proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
           proxy_port: 22
           script: |
-            whoami
+            sudo -E /usr/local/bin/mlflow sagemaker run-local -m runs:/$runid/model -i my-container -p $port
             
       - name: History
         run: history
