@@ -39,8 +39,8 @@ jobs:
       - name: ssh proxy command
         uses: appleboy/ssh-action@master
         env:
-          runid: ${{ env.runid }}
-          port: ${{ env.port }}
+          runid: ${{ github.runid }}
+          port: ${{ github.port }}
         with:
           host: 172.0.1.81
           username: opc
@@ -50,5 +50,6 @@ jobs:
           proxy_username: opc
           proxy_key: ${{ secrets.SSH_PRIVATE_KEY }}
           proxy_port: 22
+          envs: runid,port
           script: |
             echo "sudo -E /usr/local/bin/mlflow sagemaker run-local -m runs:/$runid/model -i my-container -p $port"
