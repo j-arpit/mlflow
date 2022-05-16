@@ -37,4 +37,4 @@ jobs:
           known_hosts: unnecessary
       
       - name: print
-        run: echo "${{ github.runid }}"
+        run: echo "${{ env.runid }}"
