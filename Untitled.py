@@ -52,7 +52,7 @@ with mlflow.start_run():
     lr.fit(train_x, train_y)
 
     predicted_qualities = lr.predict(test_x)
-    signature = infer_signature(train_x, clf.predict(train_x))
+    signature = infer_signature(train_x, lr.predict(train_x))
 
     (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
 
