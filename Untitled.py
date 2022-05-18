@@ -10,6 +10,7 @@ from sklearn.linear_model import ElasticNet
 from urllib.parse import urlparse
 import mlflow.sklearn
 import mlflow
+from mlflow.models.signature import infer_signature
 
 
 def eval_metrics(actual, pred):
@@ -51,6 +52,7 @@ with mlflow.start_run():
     lr.fit(train_x, train_y)
 
     predicted_qualities = lr.predict(test_x)
+    signature = infer_signature(train_x, clf.predict(train_x))
 
     (rmse, mae, r2) = eval_metrics(test_y, predicted_qualities)
 
@@ -67,7 +69,7 @@ with mlflow.start_run():
     ##print(mlflow.get_tracking_uri())
     
     model_name = "ElasticnetWineModel"
-    mlflow.sklearn.log_model(lr, "model", registered_model_name="ElasticnetWineModel")
+    mlflow.sklearn.log_model(lr, "model", registered_model_name="ElasticnetWineModel", signature=signature)
     
 
 
