@@ -11,6 +11,7 @@ from urllib.parse import urlparse
 import mlflow.sklearn
 import mlflow
 from mlflow.models.signature import infer_signature
+from mlflow.utils.mlflow_tags import MLFLOW_GIT_COMMIT, MLFLOW_SOURCE_TYPE, MLFLOW_GIT_BRANCH, MLFLOW_GIT_REPO_URL, MLFLOW_SOURCE_NAME
 
 
 def eval_metrics(actual, pred):
@@ -20,7 +21,6 @@ def eval_metrics(actual, pred):
     return rmse, mae, r2
 
 warnings.filterwarnings("ignore")
-np.random.seed(40)
 
 # Read the wine-quality csv file from the URL
 csv_url = (
@@ -47,6 +47,8 @@ l1_ratio = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5
 mlflow.set_tracking_uri("http://172.0.1.81:5000")
 #mlflow.set_tracking_uri("http://127.0.0.1:5000")
 mlflow.set_experiment("newExp")   
+import git 
+repo = git.Repo("")
 with mlflow.start_run():
     lr = ElasticNet(alpha=alpha, l1_ratio=l1_ratio, random_state=42)
     lr.fit(train_x, train_y)
@@ -65,6 +67,10 @@ with mlflow.start_run():
     mlflow.log_metric("rmse", rmse)
     mlflow.log_metric("r2", r2)
     mlflow.log_metric("mae", mae)
+    tag = {MLFLOW_GIT_COMMIT: repo.head.commit, MLFLOW_SOURCE_TYPE:'PROJECT', 
+           MLFLOW_GIT_BRANCH:repo.active_branch, MLFLOW_GIT_REPO_URL:"https://github.com/j-arpit/ElasticNet.git",
+          MLFLOW_SOURCE_NAME:"GITHUB"}
+    mlflow.set_tags(tag)
 
     ##print(mlflow.get_tracking_uri())
     
