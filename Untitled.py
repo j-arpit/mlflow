@@ -68,7 +68,7 @@ with mlflow.start_run():
     mlflow.log_metric("r2", r2)
     mlflow.log_metric("mae", mae)
     tag = {MLFLOW_GIT_COMMIT: repo.head.commit, MLFLOW_SOURCE_TYPE:'PROJECT', 
-           MLFLOW_GIT_BRANCH:repo.active_branch, MLFLOW_SOURCE_NAME:"https://github.com/j-arpit/ElasticNet.git"}
+           MLFLOW_GIT_BRANCH:repo.active_branch, MLFLOW_SOURCE_NAME:"https://github.com/j-arpit/mlflow.git"}
     mlflow.set_tags(tag)
 
     ##print(mlflow.get_tracking_uri())
