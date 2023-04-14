@@ -44,9 +44,9 @@ test_y = test[["quality"]]
 alpha = float(sys.argv[1]) if len(sys.argv) > 1 else 0.5
 l1_ratio = float(sys.argv[2]) if len(sys.argv) > 2 else 0.5
 
-mlflow.set_tracking_uri("http://172.0.1.81:5000")
+#mlflow.set_tracking_uri("http://172.0.1.81:5000")
 #mlflow.set_tracking_uri("http://127.0.0.1:5000")
-mlflow.set_experiment("newExp")   
+mlflow.set_experiment("Exp")   
 import git 
 repo = git.Repo("")
 with mlflow.start_run():

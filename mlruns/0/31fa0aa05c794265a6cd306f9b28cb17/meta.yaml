@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Arpit%20Joshi/ml/mlflow/mlruns/0/31fa0aa05c794265a6cd306f9b28cb17/artifacts
+end_time: 1681473057724
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: 31fa0aa05c794265a6cd306f9b28cb17
+run_uuid: 31fa0aa05c794265a6cd306f9b28cb17
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1681473054650
+status: 4
+tags: []
+user_id: Arpit Joshi
